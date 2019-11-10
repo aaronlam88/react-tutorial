@@ -4,12 +4,10 @@
     "node": true
   },
   "extends": [
-    "prettier",
     "airbnb",
     "plugin:jest/recommended"
   ],
   "plugins": [
-    "prettier",
     "react",
     "jest"
   ],
