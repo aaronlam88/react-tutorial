@@ -1,0 +1,6 @@
+TODO:
+button
+table
+form
+group input
+talk about () => () => {} functions

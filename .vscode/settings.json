@@ -1,5 +1,14 @@
+<<<<<<< HEAD
 {
     "eslint.workingDirectories": [
         "client"
     ]
 }
+=======
+{
+    "eslint.workingDirectories": [
+        "client",
+        "server"
+    ]
+}
+>>>>>>> ba3ae02c5f2099a27cb2798bc69bc8ec9bf7ead9
