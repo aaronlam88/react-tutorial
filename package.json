@@ -1,0 +1,9 @@
+{
+    "name": "react-tutorial",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+      "build-client": "cd client && npm ci && npm run build",
+      "build-server": "cd server && npm ci"
+    }
+  }
