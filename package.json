@@ -4,6 +4,10 @@
     "private": true,
     "scripts": {
       "build-client": "cd client && npm ci && npm run build",
-      "build-server": "cd server && npm ci"
+      "build-server": "cd server && npm ci",
+      "build": "concurrently \"cd client && npm ci && npm run build\" \"cd server && npm ci\""
+    },
+    "dependencies": {
+      "concurrently": "^5.1.0"
     }
   }
