@@ -5,5 +5,30 @@
 		}
 	],
 	"settings": {
+		"[html]": {
+			"editor.tabSize": 2
+		},
+		"[javascript]": {
+			"editor.defaultFormatter": "vscode.typescript-language-features",
+			"editor.tabSize": 2
+		},
+		"[sass]": {
+			"editor.tabSize": 2
+		},
+		"editor.fontSize": 12,
+		"files.exclude": {
+			"**/build/": true,
+			"**/bundle.js": true,
+			"**/node_modules/": true,
+		},
+		"files.insertFinalNewline": true,
+		"search.collapseResults": "auto",
+		"search.exclude": {
+			"**/dist": true,
+			"**/build/": true,
+			"**/bundle.js": true,
+			"**/node_modules/": true,
+			"**/resources/*-client": true
+		}
 	}
 }

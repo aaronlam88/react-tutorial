@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "scripts": {
     "start": "node ./bin/www.js"
   },
@@ -16,5 +19,9 @@
     "helmet": "^3.23.2",
     "http-errors": "~1.6.3",
     "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.3.1",
+    "eslint-plugin-node": "^11.1.0"
   }
 }
