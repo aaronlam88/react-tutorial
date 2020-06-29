@@ -27,6 +27,7 @@
         "SwitchCase": 1
       }
     ],
+    "quote-props": ["error", "consistent"],
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/no-autofocus": [
       "warn",

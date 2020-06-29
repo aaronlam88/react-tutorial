@@ -2,7 +2,7 @@ import toJson from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 
 import React from 'react';
-import ErrorBoundary from './ErrorBoundary.jsx';
+import ErrorBoundary from './ErrorBoundary';
 
 it('should render children when no error', () => {
   const wrapper = shallow(<ErrorBoundary>Test</ErrorBoundary>);

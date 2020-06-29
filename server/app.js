@@ -7,11 +7,10 @@ import helmet from 'helmet';
 import logger from 'morgan';
 import path, { join } from 'path';
 
-import indexRouter from './routes/index.js';
-import usersRouter from './routes/users.js';
-
 const app = express();
 const __dirname = path.resolve();
+const clientPath = join(__dirname, '../client/build/');
+console.log(clientPath);
 
 // adding Helmet to enhance your API security
 app.use(helmet());
@@ -34,15 +33,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // add public directory
-app.use(express.static(join(__dirname, 'public')));
-
+app.use(express.static(clientPath));
+app.get('*', function(req, res) {
+  res.sendFile(path.join(clientPath, 'index.html'));
+});
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function (err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -51,9 +52,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// add routes
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 export default app;
