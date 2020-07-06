@@ -1,16 +1,22 @@
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import createError from 'http-errors';
 import express from 'express';
 import helmet from 'helmet';
 import logger from 'morgan';
 import path, { join } from 'path';
-
-const app = express();
+import fs from 'fs';
 const __dirname = path.resolve();
 const clientPath = join(__dirname, '../client/build/');
-console.log(clientPath);
+const staticsPath = join(__dirname, './statics/');
+const errorPath = join(staticsPath, 'errors');
+const error404 = fs.readFileSync(join(errorPath, '404'), 'utf-8');
+const error500 = fs.readFileSync(join(errorPath, '500'), 'utf-8');
+
+const app = express();
+
+// set view engine, use pug
+app.set('view engine', 'pug')
 
 // adding Helmet to enhance your API security
 app.use(helmet());
@@ -34,23 +40,26 @@ app.use(cookieParser());
 
 // add public directory
 app.use(express.static(clientPath));
-app.get('*', function(req, res) {
+// add client index page
+app.get('/', (req, res) => {
   res.sendFile(path.join(clientPath, 'index.html'));
-});
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res) {
+// handle 500
+app.use((err, req, res, _next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error.pug', { message: error500 });
+});
+// handle 404
+app.use( (req, res, _next) => {
+  res.status(404);
+  res.render('error.pug', { message: error404 });
 });
 
 export default app;
