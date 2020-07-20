@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node ./bin/www.js",
     "test": "jest --detectOpenHandles",
-    "prettier": "prettier --write \"src/**/*.{js,jsx,json}\""
+    "prettier": "prettier --write \"src/**/*.{js,jsx,json}\"",
+    "eslint": "eslint --fix"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -32,7 +33,10 @@
     "eslint": "^7.4.0",
     "eslint-plugin-jest": "^23.18.0",
     "eslint-plugin-node": "^11.1.0",
+    "husky": "^4.2.5",
     "jest": "^26.1.0",
-    "prettier": "^2.0.5"
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1"
   }
 }
