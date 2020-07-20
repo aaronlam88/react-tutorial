@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node ./bin/www.js",
     "test": "jest --detectOpenHandles",
-    "prettier": "prettier --write \"./**/*.{js,jsx,json}\""
+    "prettier": "prettier --write \"src/**/*.{js,jsx,json}\""
   },
   "dependencies": {
     "body-parser": "^1.19.0",

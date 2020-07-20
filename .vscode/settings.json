@@ -3,5 +3,10 @@
         "client",
         "server"
     ],
-    "files.eol": "\n"
+    "files.eol": "\n",
+    "cSpell.ignoreWords": [
+        "enzymerc",
+        "enzymerc js",
+        "js"
+    ]
 }

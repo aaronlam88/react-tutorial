@@ -1,16 +1,17 @@
 {
   "env": {
+    "es6": true,
     "browser": true,
     "node": true
   },
   "extends": [
+    "react-app",
     "airbnb",
-    "plugin:jest/recommended"
+    "plugin:jsx-a11y/recommended",
+    "prettier",
+    "prettier/react"
   ],
-  "plugins": [
-    "react",
-    "jest"
-  ],
+  "plugins": ["jsx-a11y", "prettier", "react", "jest"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
@@ -20,78 +21,7 @@
     "sourceType": "module"
   },
   "rules": {
-    "indent": [
-      "error",
-      2,
-      {
-        "SwitchCase": 1
-      }
-    ],
-    "quote-props": ["error", "consistent"],
-    "jsx-a11y/anchor-is-valid": "off",
-    "jsx-a11y/no-autofocus": [
-      "warn",
-      {
-        "ignoreNonDOM": true
-      }
-    ],
-    "max-len": [
-      "error",
-      {
-        "code": 140,
-        "ignoreComments": true,
-        "ignoreUrls": true
-      }
-    ],
-    "no-console": [
-      "error",
-      {
-        "allow": [
-          "warn",
-          "error"
-        ]
-      }
-    ],
-    "no-unused-vars": [
-      "warn"
-    ],
-    "object-curly-newline": [
-      "error",
-      {
-        "ObjectPattern": {
-          "multiline": true
-        }
-      }
-    ],
-    "prettier/prettier": "off",
-    "react/no-unescaped-entities": "off",
-    "react/button-has-type": "off",
-    "react/forbid-prop-types": "off",
-    "react/jsx-filename-extension": [
-      "error",
-      {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
-      }
-    ],
-    "react/jsx-indent": "off",
-    "react/jsx-one-expression-per-line": [
-      "off"
-    ],
-    "react/prefer-stateless-function": [
-      "error",
-      {
-        "ignorePureComponents": true
-      }
-    ],
-    "react/destructuring-assignment": [
-      "error",
-      "always",
-      {
-        "ignoreClassFields": true
-      }
-    ]
+    "quotes": ["error", "double"],
+    "no-console": ["error", { "allow": ["warn", "error"] }]
   }
 }

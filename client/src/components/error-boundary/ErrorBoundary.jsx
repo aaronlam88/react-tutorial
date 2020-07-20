@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -30,10 +30,7 @@ class ErrorBoundary extends Component {
 }
 
 ErrorBoundary.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.node,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]),
 };
 
 ErrorBoundary.defaultProps = {
