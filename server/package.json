@@ -7,7 +7,8 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "start": "node ./bin/www.js"
+    "start": "node ./bin/www.js",
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -20,10 +21,16 @@
     "helmet": "^3.23.3",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "pug": "^3.0.0"
+    "pug": "^3.0.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "babel-jest": "^26.1.0",
     "eslint": "^7.4.0",
-    "eslint-plugin-node": "^11.1.0"
+    "eslint-plugin-jest": "^23.18.0",
+    "eslint-plugin-node": "^11.1.0",
+    "jest": "^26.1.0"
   }
 }
