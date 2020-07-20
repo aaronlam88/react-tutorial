@@ -63,7 +63,7 @@ export const sql = ({ database, sqlStmt }) => {
         connection.release();
         resolve(result);
       });
-    })
+    }),
   );
 };
 
@@ -86,7 +86,7 @@ export const prepare = ({ database, prepareStmt, params }) => {
         connection.release();
         resolve(result);
       });
-    })
+    }),
   );
 };
 

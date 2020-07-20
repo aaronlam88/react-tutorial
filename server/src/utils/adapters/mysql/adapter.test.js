@@ -29,8 +29,9 @@ describe("MySQL Adapter Test", () => {
   test("test sql with promise", async () => {
     await sql({ database: "account_schema", sqlStmt: "show tables;" }).then(
       (result) => {
+        console.log(result);
         expect(result).toEqual(account_schema);
-      }
+      },
     );
   });
 });
