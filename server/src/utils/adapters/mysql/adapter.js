@@ -13,7 +13,7 @@ import mysql from "mysql";
 import setting from "./setting.json";
 
 // setup log
-import logger from "../../log/winston_logger.js";
+import log from "../../log/winston_logger.js";
 
 // setup mysql connection variables with environment variables
 const host = process.env.MYSQL_HOST;
@@ -33,32 +33,32 @@ const pool = mysql.createPool({
 });
 
 pool.on("acquire", function (connection) {
-  logger.debug("Connection %d acquired", connection.threadId);
+  log.debug("Connection %d acquired", connection.threadId);
 });
 
 pool.on("connection", (connection) => {
-  logger.debug("new connection %d", connection.threadId);
+  log.debug("new connection %d", connection.threadId);
 });
 
 pool.on("enqueue", function () {
-  logger.debug("Waiting for available connection slot");
+  log.debug("Waiting for available connection slot");
 });
 
 export const sql = ({ database, sqlStmt }) => {
-  if (!database) {
+  if (!database || !sqlStmt) {
     throw "all parameters are required!";
   }
   return new Promise((resolve) =>
     pool.getConnection((error, connection) => {
       if (error) {
-        logger.error(error);
+        log.error(error);
       }
       connection.changeUser({
         database,
       });
       connection.query(sqlStmt, (connectionError, result) => {
         if (connectionError) {
-          logger.error(connectionError);
+          log.error(connectionError);
         }
         connection.release();
         resolve(result);
@@ -68,20 +68,20 @@ export const sql = ({ database, sqlStmt }) => {
 };
 
 export const prepare = ({ database, prepareStmt, params }) => {
-  if (!database || prepareStmt || params) {
+  if (!database || !prepareStmt || !params) {
     throw "all parameters are required!";
   }
   return new Promise((resolve) =>
     pool.getConnection((error, connection) => {
       if (error) {
-        logger.error(error);
+        log.error(error);
       }
       connection.changeUser({
         database,
       });
       connection.query(prepareStmt, params, (connectionError, result) => {
         if (connectionError) {
-          logger.error(connectionError);
+          log.error(connectionError);
         }
         connection.release();
         resolve(result);

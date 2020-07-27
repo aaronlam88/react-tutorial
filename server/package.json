@@ -7,7 +7,7 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "start": "node ./bin/www.js",
+    "start": "node --experimental-json-modules ./bin/www.js",
     "test": "jest --detectOpenHandles",
     "prettier": "prettier --write \"src/**/*.{js,jsx,json}\"",
     "eslint": "eslint --fix"
@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "express-jwt": "^5.3.3",
     "helmet": "^3.23.3",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "pug": "^3.0.0",
