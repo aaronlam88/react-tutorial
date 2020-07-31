@@ -1,5 +1,0 @@
-{
-  "connectionLimit": 100,
-  "queueLimit": 5,
-  "connectTimeout": 60000
-}
