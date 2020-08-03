@@ -32,21 +32,21 @@ const pool = mysql.createPool({
   ...setting,
 });
 
-pool.on("acquire", function (connection) {
-  log.debug("Connection %d acquired", connection.threadId);
+pool.on("acquire", (connection) => {
+  log.debug(`Connection Id ${connection.threadId} acquired`);
 });
 
 pool.on("connection", (connection) => {
-  log.debug("new connection %d", connection.threadId);
+  log.debug(`New connection Id ${connection.threadId}`);
 });
 
-pool.on("enqueue", function () {
+pool.on("enqueue", () => {
   log.debug("Waiting for available connection slot");
 });
 
 export const sql = ({ database, sqlStmt }) => {
   if (!database || !sqlStmt) {
-    throw "all parameters are required!";
+    throw "All parameters are required!";
   }
   return new Promise((resolve) =>
     pool.getConnection((error, connection) => {
@@ -69,7 +69,7 @@ export const sql = ({ database, sqlStmt }) => {
 
 export const prepare = ({ database, prepareStmt, params }) => {
   if (!database || !prepareStmt || !params) {
-    throw "all parameters are required!";
+    throw "All parameters are required!";
   }
   return new Promise((resolve) =>
     pool.getConnection((error, connection) => {

@@ -5,8 +5,8 @@ import log from "../utils/log/winston_logger.js";
 const router = express.Router();
 /* POST login. */
 router.post("/", (req, res, _next) => {
-  log.info(req);
   const { username, password } = req.body;
+  log.debug(`Login for username: ${username}`);
   tokenGenerator(username, password)
     .then((token) =>
       res.json({
