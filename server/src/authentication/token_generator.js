@@ -2,9 +2,8 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import expressJwt from "express-jwt";
 import log from "../utils/log/winston_logger.js";
-
+// import models
 import Authentication from "../models/authentication.js";
-
 // error message
 const error = "Username or password is incorrect";
 // get jwt secret from environment variable
@@ -40,7 +39,7 @@ export const tokenGenerator = (username, password) => {
         reject(error);
         return;
       }
-      resolve(jwt.sign({ username: auth.email }, secret, { expiresIn }));
+      resolve(jwt.sign({ username }, secret, { expiresIn }));
     });
   });
 };
