@@ -1,4 +1,5 @@
-import { Sequelize, DataTypes as type } from "sequelize";
+import _sequelize from "sequelize";
+const { Sequelize, DataTypes } = _sequelize;
 let sequelize = new Sequelize(
   "privilege_schema",
   process.env.MYSQL_USER,
@@ -14,21 +15,22 @@ const Session = sequelize.define(
   "session",
   {
     session_id: {
-      type: type.STRING,
+      type: DataTypes.STRING,
       primaryKey: true,
     },
     user_id: {
-      type: type.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    version: type.NUMBER,
-    type: type.STRING,
-    extra: type.JSON,
-    time_to_live: type.NUMBER,
-    create_time: type.DATE,
+    version: DataTypes.NUMBER,
+    type: DataTypes.STRING,
+    extra: DataTypes.JSON,
+    time_to_live: DataTypes.NUMBER,
+    create_time: DataTypes.DATE,
   },
   {
     tableName: "session",
+    timestamps: false,
   },
 );
 

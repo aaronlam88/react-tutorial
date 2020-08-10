@@ -6,8 +6,6 @@ import helmet from "helmet";
 import path, { join } from "path";
 // setup log
 import logger from "morgan";
-// passport for authentication
-import passport from "passport";
 
 const __dirname = path.resolve();
 const clientPath = join(__dirname, "../client/build/");
@@ -24,9 +22,6 @@ app.use(cors());
 
 // add morgan to log HTTP requests
 app.use(logger("combined"));
-
-// add passport for authentication
-app.use(passport.initialize());
 
 // Content-Type parsing
 // parse application/json
@@ -47,7 +42,7 @@ app.get("/", (req, res) => {
 });
 
 // add route
-import login from "./src/authentication/login.js";
+import login from "./src/routes/login.js";
 app.use("/login", login);
 
 export default app;
